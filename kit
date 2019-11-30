@@ -1,0 +1,72 @@
+#postgres
+sudo -u postgres psql
+
+CREATE USER allairusr WITH ENCRYPTED PASSWORD 'allairusr';
+CREATE DATABASE allairdb;
+GRANT ALL PRIVILEGES ON DATABASE allairdb TO allairusr;
+
+
+#scripts
+CREATE TABLE public.t_client
+(
+  id serial,
+  nom character varying(255),
+  prenom character varying(255),
+  adresse character varying(255),
+  numero_ss decimal,
+  create_client character varying(20),
+  update_client character varying(20),
+  flg_hse character varying(20),
+  CONSTRAINT pk_client PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.t_client
+  OWNER TO allairusr;
+
+
+
+CREATE TABLE public.t_engine
+(
+  id serial,
+  type character varying(255),
+  entrepot character varying(255),
+  flg_lck boolean,
+  create_engine character varying(20),
+  update_engine character varying(20),
+  flg_hse character varying(20),
+  CONSTRAINT pk_engine PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.t_engine
+  OWNER TO allairusr;
+
+
+
+
+
+
+CREATE TABLE public.t_location
+(
+  id serial,
+  id_client numeric,
+  id_engine numeric,
+  date_debut timestamp,
+  date_fin timestamp,
+  create_engine character varying(20),
+  update_engine character varying(20),
+  flg_hse character varying(20),
+  CONSTRAINT pk_location PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.t_location
+  OWNER TO allairusr;
+
+
+commit;
+
