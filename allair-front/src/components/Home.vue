@@ -1,9 +1,18 @@
 <template>
-  <div class="footer">
-    <button class="engine" title="louer un scooter" />
-    <button class="warn" title="signaler un scooter" />
-    <button class="profile" title="se connecter"/>
-    <button class="inscription" title="s'inscrire"/>
+  <div>
+    <div class="menubar">
+      <router-link to="/EngineRent"><button  title="louer un scooter">Commander</button></router-link>
+      <router-link to="/"><button title="SAV">SAV</button></router-link>
+      <router-link to="/"><button title="Aide">Premiers pas</button></router-link>
+    </div>
+    <div class="conteneur">
+      <img src="@/assets/images/body.png" class="corps">
+    </div>
+    <div class="footer">
+      <router-link to="/">
+       <img src="@/assets/images/urgence.png"/>
+      </router-link>
+    </div>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 export default class SmsManager {
     constructor (toNumber, fromNumber, message) {
       this.url = 'https://api.twilio.com/2010-04-01/Accounts/ACc988b0213abd386962b3e606bb9471aa/Messages.json'
-      this.auth = 'ACc988b0213abd386962b3e606bb9471aa:10e49777e01303b0fdc026cefb679079'
+      this.auth = 'xx'
       this.headerSMS = {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Basic ' + btoa(this.auth)
@@ -28,7 +28,7 @@ export default class SmsManager {
     }
   
     static meContacter (message) {
-      let smsManager = new SmsManager('0638702403', '+33644643515', message)
+      let smsManager = new SmsManager('numero1', 'numero2', message)
       smsManager.send()
     }
   }

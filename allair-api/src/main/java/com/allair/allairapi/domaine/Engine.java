@@ -16,7 +16,9 @@ public class Engine extends TrackEntity {
 	@Column(name="entrepot")
 	private String entrepot;
 	@Column(name="flg_lck")
-	private String flgLck;
+	private boolean flgLck;
+	@Column(name="probleme")
+	private String probleme;
 	
 	public int getId() {
 		return id;
@@ -36,10 +38,16 @@ public class Engine extends TrackEntity {
 	public void setEntrepot(String entrepot) {
 		this.entrepot = entrepot;
 	}
-	public String getFlgLck() {
+	public boolean getFlgLck() {
 		return flgLck;
 	}
-	public void setFlgLck(String flgLck) {
+	public void setFlgLck(boolean flgLck) {
 		this.flgLck = flgLck;
+	}
+	public String getProbleme() {
+		return probleme;
+	}
+	public void setProbleme(String probleme) {
+		this.probleme = probleme;
 	}
 }

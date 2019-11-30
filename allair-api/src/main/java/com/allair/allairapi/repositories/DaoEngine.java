@@ -1,5 +1,6 @@
 package com.allair.allairapi.repositories;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,4 +9,6 @@ import com.allair.allairapi.domaine.Engine;
 @Repository
 public interface DaoEngine extends CrudRepository<Engine, Integer> {
 
+	@Query("select e from Engine e where e.flgLck = ?1")
+	Engine findClientByflgLck(boolean flgLck);
 }

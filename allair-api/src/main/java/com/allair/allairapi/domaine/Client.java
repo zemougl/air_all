@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_client")
-public class Client extends TrackEntity{
+public class Client extends TrackEntity {
 
 	@Id
 	private int id;
@@ -15,6 +15,8 @@ public class Client extends TrackEntity{
 	private String nom;
 	@Column(name="prenom")
 	private String prenom;
+	@Column(name="telephone")
+	private long telephone;
 	@Column(name="numero_ss")
 	private long numeross;
 	@Column(name="login")
@@ -57,5 +59,11 @@ public class Client extends TrackEntity{
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+	public long getTelephone() {
+		return telephone;
+	}
+	public void setTelephone(long telephone) {
+		this.telephone = telephone;
 	}
 }
