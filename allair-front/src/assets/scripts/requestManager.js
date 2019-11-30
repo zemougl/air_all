@@ -1,6 +1,6 @@
 export default class RequestManager {
     constructor () {
-      this.urlHttp = 'http://localhost:8080/'
+      this.urlHttp = 'http://localhost:8888/'
       this.header = {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'

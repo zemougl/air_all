@@ -1,6 +1,6 @@
 export default class SmsManager {
     constructor (toNumber, fromNumber, message) {
-      this.url = 'https://api.twilio.com/2010-04-01/Accounts/ACc988b0213abd386962b3e606bb9471aa/Messages.json'
+      this.url = 'xx'
       this.auth = 'xx'
       this.headerSMS = {
         'Content-Type': 'application/x-www-form-urlencoded',

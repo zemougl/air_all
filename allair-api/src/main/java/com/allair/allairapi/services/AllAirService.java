@@ -1,6 +1,8 @@
 package com.allair.allairapi.services;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +12,10 @@ import com.allair.allairapi.domaine.Client;
 import com.allair.allairapi.domaine.Engine;
 import com.allair.allairapi.domaine.Location;
 import com.allair.allairapi.dtos.DtoClient;
+import com.allair.allairapi.dtos.DtoLocation;
 import com.allair.allairapi.repositories.DaoClient;
 import com.allair.allairapi.repositories.DaoEngine;
 import com.allair.allairapi.repositories.DaoLocation;
-import com.allair.allairapi.utils.AllAirUtils;
 
 @Service
 public class AllAirService {
@@ -25,16 +27,17 @@ public class AllAirService {
 	@Autowired
 	private DaoLocation daoLocation;
 	
-	public void louer(Integer idClient) {
+	public boolean louer(DtoLocation location) {
 		Location l = new Location();
-		l.setIdClient(idClient);
-		Engine e = daoEngine.findClientByflgLck(false);
-		l.setIdEngine(e.getId());
-		l.setDateDebut(LocalDateTime.now());
-		l.setDateFin(LocalDateTime.now());
+		l.setIdClient(daoClient.findById(new Integer(1)).get().getId());
+		l.setIdEngine(location.getIdEngine());
+		l.setDateDebut(location.getDateDebut());
+		l.setDateFin(location.getDateFin());
 		daoLocation.save(l);
+		Engine e = daoEngine.findById(location.getIdEngine()).get();
 		e.setFlgLck(true);
 		daoEngine.save(e);
+		return true;
 	}
 	
 	public void signaler(Integer idEngine) {
@@ -47,12 +50,25 @@ public class AllAirService {
 	}
 	
 	public boolean sIdentifier(String login, String pass) {
-		Client c = daoClient.findClientByLoginAndPass(login, AllAirUtils.encode64(pass));
+		Client c = daoClient.findClientByLoginAndPass(login, pass);
 		return c==null ? false : true;
 	}
 	
 	public void sInscrire(DtoClient client) {
 		Client c = new Client();
 		daoClient.save(c);
+	}
+	
+	public List<DtoLocation> historique() {
+		List<DtoLocation> dtos = new ArrayList<>();
+		for (Location l : daoLocation.findAll()) {
+			DtoLocation dto = new DtoLocation();
+			dto.setDateDebut(l.getDateDebut());
+			dto.setDateFin(l.getDateFin());
+			dto.setIdEngine(l.getIdEngine());
+			dto.setIdClient(l.getIdClient());
+			dtos.add(dto);
+		}
+		return dtos;
 	}
 }

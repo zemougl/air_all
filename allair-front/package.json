@@ -26,7 +26,8 @@
     "vue-axios": "^2.1.5",
     "vue-datetime": "^1.0.0-beta.11",
     "vue-template-compiler": "^2.6.10",
-    "weekstart": "^1.0.0"
+    "weekstart": "^1.0.0",
+    "vue-browser-geolocation": "^1.8.0"
   },
   "eslintConfig": {
     "root": true,

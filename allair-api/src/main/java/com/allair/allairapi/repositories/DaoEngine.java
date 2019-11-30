@@ -9,6 +9,6 @@ import com.allair.allairapi.domaine.Engine;
 @Repository
 public interface DaoEngine extends CrudRepository<Engine, Integer> {
 
-	@Query("select e from Engine e where e.flgLck = ?1")
-	Engine findClientByflgLck(boolean flgLck);
+	@Query("select e from Engine e where e.flgLck = ?1 and e.type = ?2")
+	Engine findClientByflgLckAndType(boolean flgLck, String type);
 }

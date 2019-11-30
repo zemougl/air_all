@@ -2,6 +2,8 @@ package com.allair.allairapi.domaine;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,15 +12,16 @@ import javax.persistence.Table;
 public class Client extends TrackEntity {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@Column(name="nom")
 	private String nom;
 	@Column(name="prenom")
 	private String prenom;
 	@Column(name="telephone")
-	private long telephone;
+	private Long telephone;
 	@Column(name="numero_ss")
-	private long numeross;
+	private Long numeross;
 	@Column(name="login")
 	private String login;
 	@Column(name="pass")

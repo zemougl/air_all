@@ -1,5 +1,7 @@
 package com.allair.allairapi;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,9 +27,15 @@ public class AllAirController {
 	}
 	
 	@CrossOrigin
+	@RequestMapping("/historique")
+	public List<DtoLocation> historique() {
+		return service.historique();
+	}
+	
+	@CrossOrigin
 	@PostMapping("/louer")
-	public void louer(@RequestBody final DtoLocation location) {
-		 service.louer(location.getIdClient());
+	public boolean louer(@RequestBody final DtoLocation location) {
+		 return service.louer(location);
 	}
 	
 	@CrossOrigin
@@ -37,7 +45,7 @@ public class AllAirController {
 	}
 	
 	@CrossOrigin
-	@PostMapping("/login")
+	@PostMapping("/connection")
 	public boolean sIdentifier(@RequestBody final DtoClient client) {
 		 return service.sIdentifier(client.getLogin(), client.getPass());
 	}
