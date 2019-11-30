@@ -1,17 +1,9 @@
 <template>
   <div class="footer">
-    <button>
-      Louer un scooter
-    </button>
-    <button>
-      Signaler un scooter
-    </button>
-    <button>
-      Se connecter
-    </button>
-    <button>
-      S'inscrire
-    </button>
+    <button class="engine" title="louer un scooter" />
+    <button class="warn" title="signaler un scooter" />
+    <button class="profile" title="se connecter"/>
+    <button class="inscription" title="s'inscrire"/>
   </div>
 </template>
 
