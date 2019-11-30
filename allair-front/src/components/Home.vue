@@ -2,14 +2,14 @@
   <div>
     <div class="menubar">
       <router-link to="/EngineRent"><button  title="louer un scooter">Commander</button></router-link>
-      <router-link to="/"><button title="SAV">SAV</button></router-link>
-      <router-link to="/"><button title="Aide">Premiers pas</button></router-link>
+      <router-link to="/Sav"><button title="SAV">SAV</button></router-link>
+      <router-link to="/PremiersPas"><button title="Aide">Premiers pas</button></router-link>
     </div>
     <div class="conteneur">
       <img src="@/assets/images/body.png" class="corps">
     </div>
     <div class="footer">
-      <router-link to="/">
+      <router-link to="/Acceuil">
        <img src="@/assets/images/urgence.png"/>
       </router-link>
     </div>

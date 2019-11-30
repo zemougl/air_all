@@ -2,11 +2,11 @@
 <div>
   <img alt="all-r app" src="@/assets/logo.png" class="logo">
   <div class="formulaire">
-    <datetime v-model="location.dateDebut" input-class="entreedate" type="datetime" format="dd/MM/yyyy HH:mm"  placeholder="Début"></datetime>
-    <datetime v-model="location.dateFin" input-class="entreedate" type="datetime" format="dd/MM/yyyy HH:mm"  placeholder="Fin"></datetime>
+    <datetime v-model="location.dateDebut" input-class="entree" type="datetime" format="dd/MM/yyyy HH:mm"  placeholder="Début"></datetime>
+    <datetime v-model="location.dateFin" input-class="entree" type="datetime" format="dd/MM/yyyy HH:mm"  placeholder="Fin"></datetime>
     <p>
     <button @click="louer()" title="valider" class="valider"/>
-    <router-link to="/"><button title="retour" class="retour" /></router-link>
+    <router-link to="/Acceuil"><button title="retour" class="retour" /></router-link>
     </p>
   </div>
 </div>
