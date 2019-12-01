@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.allair.allairapi.dtos.DtoClient;
-import com.allair.allairapi.dtos.DtoEngine;
 import com.allair.allairapi.dtos.DtoLocation;
+import com.allair.allairapi.dtos.DtoSav;
 import com.allair.allairapi.services.AllAirService;
 
 @RestController
@@ -33,6 +33,12 @@ public class AllAirController {
 	}
 	
 	@CrossOrigin
+	@RequestMapping("/sav")
+	public List<DtoSav> sav() {
+		return service.sav();
+	}
+	
+	@CrossOrigin
 	@PostMapping("/louer")
 	public boolean louer(@RequestBody final DtoLocation location) {
 		 return service.louer(location);
@@ -40,19 +46,13 @@ public class AllAirController {
 	
 	@CrossOrigin
 	@PostMapping("/warn")
-	public void signaler(@RequestBody final DtoEngine engine) {
-		 service.signaler(engine.getIdEngine());
+	public void signaler(@RequestBody final DtoSav sav) {
+		 service.signaler(sav);
 	}
 	
 	@CrossOrigin
 	@PostMapping("/connection")
 	public boolean sIdentifier(@RequestBody final DtoClient client) {
 		 return service.sIdentifier(client.getLogin(), client.getPass());
-	}
-	
-	@CrossOrigin
-	@PostMapping("/register")
-	public void sInscrire(@RequestBody final DtoClient client) {
-		 service.sInscrire(client);
 	}
 }

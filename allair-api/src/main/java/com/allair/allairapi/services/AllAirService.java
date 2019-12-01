@@ -1,6 +1,5 @@
 package com.allair.allairapi.services;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +12,7 @@ import com.allair.allairapi.domaine.Engine;
 import com.allair.allairapi.domaine.Location;
 import com.allair.allairapi.dtos.DtoClient;
 import com.allair.allairapi.dtos.DtoLocation;
+import com.allair.allairapi.dtos.DtoSav;
 import com.allair.allairapi.repositories.DaoClient;
 import com.allair.allairapi.repositories.DaoEngine;
 import com.allair.allairapi.repositories.DaoLocation;
@@ -40,11 +40,11 @@ public class AllAirService {
 		return true;
 	}
 	
-	public void signaler(Integer idEngine) {
-		Optional<Engine> e = daoEngine.findById(idEngine);
+	public void signaler(DtoSav sav) {
+		Optional<Engine> e = daoEngine.findClientByflgLck(true);
 		if (e.isPresent()) {
 			Engine entity = e.get();
-			entity.setProbleme("un probleme est survenue");
+			entity.setProbleme(sav.getMessageUsr());
 			daoEngine.save(entity);
 		}
 	}
@@ -67,6 +67,17 @@ public class AllAirService {
 			dto.setDateFin(l.getDateFin());
 			dto.setIdEngine(l.getIdEngine());
 			dto.setIdClient(l.getIdClient());
+			dtos.add(dto);
+		}
+		return dtos;
+	}
+	
+	public List<DtoSav> sav() {
+		List<DtoSav> dtos = new ArrayList<>();
+		for (Engine e : daoEngine.findAll()) {
+			DtoSav dto = new DtoSav();
+			dto.setIdEngine(e.getId());
+			dto.setMessageUsr(e.getProbleme());
 			dtos.add(dto);
 		}
 		return dtos;
